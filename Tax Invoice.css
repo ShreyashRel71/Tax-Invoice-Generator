@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  form {
+    margin: 15px;
+  }
+  label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+  }
+  input[type="text"], input[type="number"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #3e8e41;
+  }
+  #totalAmountWithGstInWords {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 20px;
+  }
