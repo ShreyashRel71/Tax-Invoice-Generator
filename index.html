@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tax Invoice – Shreyash Wholesale Dealers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<div class="app">
+
+  <main class="entry">
+    <div class="brand"><span class="mark">S</span>Shreyash Wholesale Dealers</div>
+    <h1>New tax invoice</h1>
+
+    <section>
+      <h2>Customer</h2>
+      <label class="field">Customer name
+        <input id="customer" autocomplete="off" placeholder="Walk-in customer">
+      </label>
+      <fieldset class="counters">
+        <legend>Counter</legend>
+        <label><input type="radio" name="counter" value="1" checked><span>1</span></label>
+        <label><input type="radio" name="counter" value="2"><span>2</span></label>
+        <label><input type="radio" name="counter" value="3"><span>3</span></label>
+        <label><input type="radio" name="counter" value="4"><span>4</span></label>
+      </fieldset>
+    </section>
+
+    <section>
+      <h2>Items</h2>
+      <div id="items"></div>
+      <button type="button" class="btn ghost" id="addItem">Add item</button>
+    </section>
+
+    <section>
+      <h2>Tax and discount</h2>
+      <div class="two">
+        <label class="field">GST rate (%)
+          <input id="gst" type="number" inputmode="decimal" min="0" step="any" value="18">
+        </label>
+        <label class="field">Discount (%)
+          <input id="disc" type="number" inputmode="decimal" min="0" step="any" value="0">
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <section class="desk" aria-label="Invoice preview">
+    <div class="bar">
+      <button type="button" class="btn primary" id="pdf">Download PDF</button>
+      <button type="button" class="btn" id="img">Download image</button>
+      <button type="button" class="btn" id="email">Email</button>
+      <span class="grow"></span>
+      <button type="button" class="btn pay" id="pay" aria-pressed="false">Mark as paid</button>
+      <button type="button" class="btn ghost" id="reset">New bill</button>
+    </div>
+
+    <article class="sheet" id="sheet">
+      <header class="s-head">
+        <div>
+          <h2>Shreyash Wholesale Dealers</h2>
+          <p class="muted">Billed to</p>
+          <p class="s-cust" id="pCust">Walk-in customer</p>
+        </div>
+        <div class="s-meta">
+          <p class="s-title">Tax invoice</p>
+          <dl>
+            <dt>Date</dt><dd id="pDate"></dd>
+            <dt>Time</dt><dd id="pTime"></dd>
+            <dt>Counter</dt><dd id="pCounter">1</dd>
+          </dl>
+        </div>
+      </header>
+
+      <table class="s-items">
+        <thead><tr><th>#</th><th>Item</th><th class="r">Qty</th><th class="r">Rate</th><th class="r">Amount</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+
+      <div class="s-sum">
+        <div class="stampbox"><div class="stamp"><div class="stamp-in"><b>Paid</b><small>Payment completed and verified</small></div></div></div>
+        <dl class="tot" id="tot"></dl>
+      </div>
+
+      <p class="s-foot">This is a computer-generated invoice.</p>
+    </article>
+  </section>
+
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
